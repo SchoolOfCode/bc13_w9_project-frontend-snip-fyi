@@ -1,5 +1,9 @@
 import React from "react";
 
-export default function AddButton() {
-  return <div>AddButton</div>;
+export default function AddButton({ setIsModalOpen, buttonText }) {
+  return (
+    <div>
+      <button onClick={() => setIsModalOpen(true)}>{buttonText}</button>
+    </div>
+  );
 }
