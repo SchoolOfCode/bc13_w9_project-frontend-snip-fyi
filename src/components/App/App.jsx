@@ -35,6 +35,42 @@ const INITIAL_STATE = [
       "bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code",
     commentIds: [1, 2, 3, 4, 5],
   },
+  {
+    id: 3,
+    title: "My Code",
+    dateCreated: "22/11/2022",
+    codeSnippet: "let const = temporary",
+    description:
+      "bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code",
+    commentIds: [1, 2, 3, 4, 5],
+  },
+  {
+    id: 4,
+    title: "My Code",
+    dateCreated: "22/11/2022",
+    codeSnippet: "let const = temporary",
+    description:
+      "bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code",
+    commentIds: [1, 2, 3, 4, 5],
+  },
+  {
+    id: 5,
+    title: "My Code",
+    dateCreated: "22/11/2022",
+    codeSnippet: "let const = temporary",
+    description:
+      "bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code",
+    commentIds: [1, 2, 3, 4, 5],
+  },
+  {
+    id: 6,
+    title: "My Code",
+    dateCreated: "22/11/2022",
+    codeSnippet: "let const = temporary",
+    description:
+      "bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code",
+    commentIds: [1, 2, 3, 4, 5],
+  },
 ];
 
 function cardReducer(state, action) {
@@ -69,10 +105,7 @@ export default function App() {
               className="modal-container"
               onClick={() => setIsModalOpen(false)}
             ></div>
-            <Modal
-              setIsModalOpen={setIsModalOpen}
-              onClick={(e) => e.stopPropagation()}
-            />
+            <Modal setIsModalOpen={setIsModalOpen} />
           </>
         )}
       </main>
