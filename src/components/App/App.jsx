@@ -52,7 +52,7 @@ export default function App() {
   // TODO work out a card object design
   const [state, dispatch] = useReducer(cardReducer, INITIAL_STATE);
   // False by default
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <div className="App">
@@ -63,7 +63,18 @@ export default function App() {
           <AddButton setIsModalOpen={setIsModalOpen} buttonText="+" />
         </div>
         <CardDisplay cardList={state} />
-        {isModalOpen ? <Modal setIsModalOpen={setIsModalOpen} /> : ""}
+        {isModalOpen && (
+          <>
+            <div
+              className="modal-container"
+              onClick={() => setIsModalOpen(false)}
+            ></div>
+            <Modal
+              setIsModalOpen={setIsModalOpen}
+              onClick={(e) => e.stopPropagation()}
+            />
+          </>
+        )}
       </main>
       <Footer />
     </div>
