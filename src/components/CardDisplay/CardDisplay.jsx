@@ -1,9 +1,10 @@
 import React from "react";
 import Card from "../Card/Card";
+import "./CardDisplay.css";
 
 export default function CardDisplay({ cardList }) {
   return (
-    <div>
+    <div className="CardDisplay">
       {cardList.map((card) => {
         return (
           <Card

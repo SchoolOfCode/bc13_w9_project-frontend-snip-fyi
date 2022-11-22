@@ -9,7 +9,7 @@ export default function Card({
   numUpvotes,
 }) {
   return (
-    <div>
+    <div className="Card">
       <h3>{title}</h3>
       <p>{date}</p>
       <p>{description}</p>

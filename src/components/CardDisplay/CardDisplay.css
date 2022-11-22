@@ -1,0 +1,12 @@
+.CardDisplay {
+  display: grid;
+  max-width: 1440px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+}
+
+@media only screen and (max-width: 900px) {
+  .CardDisplay {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
