@@ -6,6 +6,41 @@
       "snippet_code": "let greet='hello'",
       "snippet_description": "how to create a variable",
       "snippet_date_create": "2022-11-22"
+    },
+    {
+      "snippet_id": 2,
+      "snippet_title": "second_title",
+      "snippet_code": "let greet='hi'",
+      "snippet_description": "how not to create a variable",
+      "snippet_date_create": "2022-11-20"
+    },
+    {
+      "snippet_id": 3,
+      "snippet_title": "third_title",
+      "snippet_code": "let greet='hey'",
+      "snippet_description": "how you could create a variable",
+      "snippet_date_create": "2022-02-14"
+    },
+    {
+      "snippet_id": 4,
+      "snippet_title": "fourth_title",
+      "snippet_code": "let greet='sup'",
+      "snippet_description": "how to create a method",
+      "snippet_date_create": "2022-11-04"
+    },
+    {
+      "snippet_id": 5,
+      "snippet_title": "fifth_title",
+      "snippet_code": "let greet='hola'",
+      "snippet_description": "why to create a variable",
+      "snippet_date_create": "2022-07-02"
+    },
+    {
+      "snippet_id": 6,
+      "snippet_title": "sixth_title",
+      "snippet_code": "let greet='salut'",
+      "snippet_description": "maybe don't create a variable",
+      "snippet_date_create": "2020-11-22"
     }
   ]
 }
