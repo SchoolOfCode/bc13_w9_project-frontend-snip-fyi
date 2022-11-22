@@ -6,7 +6,6 @@ import CardDisplay from "../CardDisplay/CardDisplay";
 
 export const ACTIONS = {
   DISPLAY_SNIPPETS: "DISPLAY_SNIPPETS",
-  FILTER_SNIPPETS: "FILTER_SNIPPETS",
   ADD_SNIPPET: "ADD_SNIPPET",
   DELETE_SNIPPET: "DELETE_SNIPPET",
   EDIT_SNIPPET: "EDIT_SNIPPET",
@@ -18,54 +17,8 @@ const INITIAL_STATE = [
     title: "My Code",
     codeSnippet: "let const = temporary",
     description: "bad code",
-    tags: ["JavaScript", "CSS"],
     dateCreated: "22/11/22",
     numComments: 8,
-    numUpvotes: 69,
-    commentIds: [],
-  },
-  {
-    id: 2,
-    title: "hello",
-    codeSnippet: "let const = temporary",
-    description: "bad code",
-    tags: ["JavaScript", "CSS"],
-    dateCreated: "22/11/22",
-    numComments: 8,
-    numUpvotes: 69,
-    commentIds: [],
-  },
-  {
-    id: 3,
-    title: "My Code",
-    codeSnippet: "let const = temporary",
-    description: "bad code",
-    tags: ["JavaScript", "CSS"],
-    dateCreated: "22/11/22",
-    numComments: 8,
-    numUpvotes: 69,
-    commentIds: [],
-  },
-  {
-    id: 4,
-    title: "My Code",
-    codeSnippet: "let const = temporary",
-    description: "bad code",
-    tags: ["JavaScript", "CSS"],
-    dateCreated: "22/11/22",
-    numComments: 8,
-    numUpvotes: 69,
-    commentIds: [],
-  },
-  {
-    id: 5,
-    title: "My Code",
-    codeSnippet: "let const = temporary",
-    description: "bad code",
-    tags: ["JavaScript", "CSS"],
-    dateCreated: "22/11/22",
-    numComments: 8,
-    numUpvotes: 69,
     commentIds: [],
   },
 ];
@@ -76,17 +29,6 @@ function cardReducer(state, action) {
       return console.log("hello world");
     case ACTIONS.DISPLAY_SNIPPETS:
       return [...state];
-    case ACTIONS.FILTER_SNIPPETS:
-      console.log(
-        state.filter((card) => {
-          const lower = card.title.toLowerCase();
-          return lower.includes(action.payload);
-        })
-      );
-      return state.filter((card) => {
-        const lower = card.title.toLowerCase();
-        return lower.includes(action.payload);
-      });
     default:
       return state;
   }

@@ -11,12 +11,9 @@ export default function CardDisplay({ cardList }) {
             key={card.id}
             title={card.title}
             date={card.date}
+            codeSnippet={card.codeSnippet}
             description={card.description}
-            tags={card.tags.map((tag) => {
-              return <p key={tag}>{tag}</p>;
-            })}
             numComments={card.numComments}
-            numUpvotes={card.numUpvotes}
           />
         );
       })}
