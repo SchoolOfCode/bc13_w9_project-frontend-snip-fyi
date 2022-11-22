@@ -1,5 +1,22 @@
 import React from "react";
 
-export default function Card() {
-  return <div>Card</div>;
+export default function Card({
+  title,
+  date,
+  description,
+  tags,
+  numComments,
+  numUpvotes,
+}) {
+  return (
+    <div>
+      <h3>{title}</h3>
+      <p>{date}</p>
+      <p>{description}</p>
+      <div>{tags}</div>
+      <p>
+        {numComments} comments, {numUpvotes} upvotes
+      </p>
+    </div>
+  );
 }
