@@ -1,4 +1,5 @@
 import React from "react";
+import "./Modal.css";
 
 export default function Modal({ setIsModalOpen }) {
   const date = new Date();
@@ -7,7 +8,7 @@ export default function Modal({ setIsModalOpen }) {
   const day = date.getDate();
 
   return (
-    <div>
+    <div className="Modal">
       <p>{`${day}-${month}-${year}`} </p>
       <textarea placeholder="Your code here" />
       <textarea placeholder="Description" />

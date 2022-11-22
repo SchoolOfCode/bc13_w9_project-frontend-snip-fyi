@@ -1,0 +1,8 @@
+.Modal {
+  position: absolute;
+  max-width: 700px;
+  width: 100%;
+  background-color: orange;
+  top: 170px;
+  left: 25%;
+}

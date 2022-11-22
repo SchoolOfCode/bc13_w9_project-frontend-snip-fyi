@@ -10,10 +10,10 @@ export default function CardDisplay({ cardList }) {
           <Card
             key={card.id}
             title={card.title}
-            date={card.date}
+            dateCreated={card.dateCreated}
             codeSnippet={card.codeSnippet}
             description={card.description}
-            numComments={card.numComments}
+            commentIds={card.commentIds}
           />
         );
       })}

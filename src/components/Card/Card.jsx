@@ -1,21 +1,21 @@
 import React from "react";
-
+import "./Card.css";
 export default function Card({
   title,
-  date,
+  dateCreated,
   description,
   codeSnippet,
   tags,
-  numComments,
+  commentIds,
 }) {
   return (
     <div className="Card">
-      <h3>{title}</h3>
-      <p>{date}</p>
+      <h3 className="title">{title}</h3>
+      <p className="date">{dateCreated}</p>
       <p>{codeSnippet}</p>
-      <p>{description}</p>
+      <p className="description">{description}</p>
       <div>{tags}</div>
-      <p>{numComments} comments</p>
+      <p>{commentIds.length} comments</p>
     </div>
   );
 }

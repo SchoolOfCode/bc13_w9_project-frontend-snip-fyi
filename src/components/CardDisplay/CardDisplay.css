@@ -1,5 +1,7 @@
 .CardDisplay {
   display: grid;
+  margin-top: 2rem;
+  gap: 1em;
   max-width: 1440px;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto;
