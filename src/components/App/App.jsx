@@ -3,6 +3,7 @@ import AddButton from "../AddButton/AddButton";
 import Header from "../Header/Header";
 import Search from "../Search/Search";
 import CardDisplay from "../CardDisplay/CardDisplay";
+import Modal from "../Modal/Modal";
 
 export const ACTIONS = {
   DISPLAY_SNIPPETS: "DISPLAY_SNIPPETS",
@@ -46,6 +47,7 @@ export default function App() {
       <Search dispatch={dispatch} />
       <AddButton setIsModalOpen={setIsModalOpen} buttonText="+" />
       <CardDisplay cardList={state} />
+      {isModalOpen ? <Modal setIsModalOpen={setIsModalOpen} /> : ""}
     </div>
   );
 }

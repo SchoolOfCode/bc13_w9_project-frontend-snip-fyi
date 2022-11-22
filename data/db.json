@@ -1,0 +1,11 @@
+{
+  "snippets": [
+    {
+      "snippet_id": 1,
+      "snippet_title": "first_title",
+      "snippet_code": "let greet='hello'",
+      "snippet_description": "how to create a variable",
+      "snippet_date_create": "2022-11-22"
+    }
+  ]
+}
