@@ -1,4 +1,5 @@
 .CardDisplay {
+  position: absolute;
   display: grid;
   margin-top: 2rem;
   gap: 1em;
