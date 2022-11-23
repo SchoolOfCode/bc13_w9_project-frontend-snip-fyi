@@ -8,9 +8,16 @@ export default function Card({
   codeSnippet,
   tags,
   commentIds,
+  setIsViewOpen,
+  setCardId,
 }) {
+  function handleClick() {
+    setIsViewOpen(true);
+    setCardId(id);
+    // setIsViewOpen to false
+  }
   return (
-    <div className="Card">
+    <div onClick={() => handleClick()} className="Card">
       <h3 className="title">{title}</h3>
       <p className="date">{dateCreated}</p>
       <p>{codeSnippet}</p>

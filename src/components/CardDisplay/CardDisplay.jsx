@@ -2,7 +2,7 @@ import React from "react";
 import Card from "../Card/Card";
 import "./CardDisplay.css";
 
-export default function CardDisplay({ cardList }) {
+export default function CardDisplay({ cardList, setIsViewOpen, setCardId }) {
   return (
     <div className="CardDisplay">
       {cardList.map((card) => {
@@ -15,6 +15,10 @@ export default function CardDisplay({ cardList }) {
             codeSnippet={card.codeSnippet}
             description={card.description}
             commentIds={card.commentIds}
+            // Ideally we would want to use context, instead of prop drilling down
+            // from App > CardDisplay > Card
+            setIsViewOpen={setIsViewOpen}
+            setCardId={setCardId}
           />
         );
       })}

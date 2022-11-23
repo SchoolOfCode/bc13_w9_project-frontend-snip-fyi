@@ -8,6 +8,7 @@ import Search from "../Search/Search";
 import CardDisplay from "../CardDisplay/CardDisplay";
 import Modal from "../Modal/Modal";
 import Footer from "../Footer/Footer";
+import ViewSnippet from "../ViewSnippet/ViewSnippet";
 
 export const ACTIONS = {
   DISPLAY_SNIPPETS: "DISPLAY_SNIPPETS",
@@ -28,7 +29,7 @@ const INITIAL_STATE = [
   },
   {
     id: 2,
-    title: "My Code",
+    title: "My Bad Code",
     dateCreated: "22/11/2022",
     codeSnippet: "let const = temporary",
     description:
@@ -89,6 +90,8 @@ export default function App() {
   const [state, dispatch] = useReducer(cardReducer, INITIAL_STATE);
   // False by default
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isViewOpen, setIsViewOpen] = useState(false);
+  const [cardId, setCardId] = useState(null);
 
   return (
     <div className="App">
@@ -98,7 +101,11 @@ export default function App() {
           <Search dispatch={dispatch} />
           <AddButton setIsModalOpen={setIsModalOpen} buttonText="+" />
         </div>
-        <CardDisplay cardList={state} />
+        <CardDisplay
+          cardList={state}
+          setIsViewOpen={setIsViewOpen}
+          setCardId={setCardId}
+        />
         {isModalOpen && (
           <>
             <div
@@ -106,6 +113,20 @@ export default function App() {
               onClick={() => setIsModalOpen(false)}
             ></div>
             <Modal setIsModalOpen={setIsModalOpen} />
+          </>
+        )}
+        {isViewOpen && (
+          <>
+            <div
+              className="view-snippet-container"
+              onClick={() => setIsViewOpen(false)}
+            ></div>
+            <ViewSnippet
+              setIsViewOpen={setIsViewOpen}
+              isViewOpen={isViewOpen}
+              cardList={state}
+              cardId={cardId}
+            />
           </>
         )}
       </main>

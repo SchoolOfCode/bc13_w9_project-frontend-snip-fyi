@@ -9,7 +9,8 @@ export default function Modal({ setIsModalOpen }) {
 
   return (
     <div className="Modal">
-      <p>{`${day}-${month}-${year}`} </p>
+      <p>{`${day}-${month}-${year}`}</p>
+      <input type="text" placeholder="Title"></input>
       <textarea placeholder="Your code here" />
       <textarea placeholder="Description" />
       <button>Save</button>
