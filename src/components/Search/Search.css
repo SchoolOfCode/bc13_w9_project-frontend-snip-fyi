@@ -1,0 +1,15 @@
+.Search {
+  flex: 1;
+}
+
+.Search input {
+  width: 30%;
+  padding: 1em;
+  transition: all 200ms ease-in;
+  border-radius: 5px;
+  border: none;
+}
+
+.Search input:focus {
+  width: 80%;
+}

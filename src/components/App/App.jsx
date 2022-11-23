@@ -1,9 +1,13 @@
 import React, { useReducer, useState } from "react";
+
+import "./App.css";
+
 import AddButton from "../AddButton/AddButton";
 import Header from "../Header/Header";
 import Search from "../Search/Search";
 import CardDisplay from "../CardDisplay/CardDisplay";
 import Modal from "../Modal/Modal";
+import Footer from "../Footer/Footer";
 
 export const ACTIONS = {
   DISPLAY_SNIPPETS: "DISPLAY_SNIPPETS",
@@ -16,11 +20,56 @@ const INITIAL_STATE = [
   {
     id: 1,
     title: "My Code",
+    dateCreated: "22/11/2022",
     codeSnippet: "let const = temporary",
-    description: "bad code",
-    dateCreated: "22/11/22",
-    numComments: 8,
-    commentIds: [],
+    description:
+      "bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code",
+    commentIds: [1, 2, 3, 4, 5],
+  },
+  {
+    id: 2,
+    title: "My Code",
+    dateCreated: "22/11/2022",
+    codeSnippet: "let const = temporary",
+    description:
+      "bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code",
+    commentIds: [1, 2, 3, 4, 5],
+  },
+  {
+    id: 3,
+    title: "My Code",
+    dateCreated: "22/11/2022",
+    codeSnippet: "let const = temporary",
+    description:
+      "bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code",
+    commentIds: [1, 2, 3, 4, 5],
+  },
+  {
+    id: 4,
+    title: "My Code",
+    dateCreated: "22/11/2022",
+    codeSnippet: "let const = temporary",
+    description:
+      "bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code",
+    commentIds: [1, 2, 3, 4, 5],
+  },
+  {
+    id: 5,
+    title: "My Code",
+    dateCreated: "22/11/2022",
+    codeSnippet: "let const = temporary",
+    description:
+      "bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code",
+    commentIds: [1, 2, 3, 4, 5],
+  },
+  {
+    id: 6,
+    title: "My Code",
+    dateCreated: "22/11/2022",
+    codeSnippet: "let const = temporary",
+    description:
+      "bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code",
+    commentIds: [1, 2, 3, 4, 5],
   },
 ];
 
@@ -42,12 +91,25 @@ export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <div>
+    <div className="App">
       <Header title="Snip" />
-      <Search dispatch={dispatch} />
-      <AddButton setIsModalOpen={setIsModalOpen} buttonText="+" />
-      <CardDisplay cardList={state} />
-      {isModalOpen ? <Modal setIsModalOpen={setIsModalOpen} /> : ""}
+      <main className="main-content">
+        <div className="utils">
+          <Search dispatch={dispatch} />
+          <AddButton setIsModalOpen={setIsModalOpen} buttonText="+" />
+        </div>
+        <CardDisplay cardList={state} />
+        {isModalOpen && (
+          <>
+            <div
+              className="modal-container"
+              onClick={() => setIsModalOpen(false)}
+            ></div>
+            <Modal setIsModalOpen={setIsModalOpen} />
+          </>
+        )}
+      </main>
+      <Footer />
     </div>
   );
 }

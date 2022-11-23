@@ -9,11 +9,12 @@ export default function CardDisplay({ cardList }) {
         return (
           <Card
             key={card.id}
+            id={card.id}
             title={card.title}
-            date={card.date}
+            dateCreated={card.dateCreated}
             codeSnippet={card.codeSnippet}
             description={card.description}
-            numComments={card.numComments}
+            commentIds={card.commentIds}
           />
         );
       })}
