@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { ACTIONS } from "../App/reducers";
+import { ACTIONS } from "../../helpers/reducers";
+
 // CSS import
 import "./Search.css";
 

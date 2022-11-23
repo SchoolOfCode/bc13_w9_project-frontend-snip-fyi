@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import formatDate from "../../helpers/formatDate";
-import { ACTIONS } from "../App/reducers";
+import { ACTIONS } from "../../helpers/reducers";
 
 import "./CommentForm.css";
 

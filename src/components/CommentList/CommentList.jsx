@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { ACTIONS } from "../App/reducers";
+import { ACTIONS } from "../../helpers/reducers";
 
 // Components import
 import Comment from "../Comment/Comment";

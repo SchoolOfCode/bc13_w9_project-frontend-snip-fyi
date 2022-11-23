@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { ACTIONS } from "../App/reducers";
+import { ACTIONS } from "../../helpers/reducers";
+
 // Import used to format / check js code
 import prettier from "https://unpkg.com/prettier@2.8.0/esm/standalone.mjs";
 import parserBabel from "https://unpkg.com/prettier@2.8.0/esm/parser-babel.mjs";

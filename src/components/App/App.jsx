@@ -11,7 +11,7 @@ import CardDisplay from "../CardDisplay/CardDisplay";
 import CreateSnippet from "../CreateSnippet/CreateSnippet";
 import ViewSnippet from "../ViewSnippet/ViewSnippet";
 
-import { snippetReducer, ACTIONS } from "./reducers";
+import { ACTIONS, snippetReducer } from "../../helpers/reducers";
 
 export default function App() {
   // States declared
