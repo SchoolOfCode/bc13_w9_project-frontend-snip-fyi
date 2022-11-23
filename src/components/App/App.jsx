@@ -23,6 +23,10 @@ function cardReducer(state, action) {
       return [...state, action.payload];
     case ACTIONS.DISPLAY_SNIPPETS:
       return [...action.payload];
+    case ACTIONS.DELETE_SNIPPET:
+      return state.filter(
+        (snippet) => snippet.snippet_id !== action.payload.snippet_id
+      );
     default:
       return state;
   }
@@ -84,6 +88,7 @@ export default function App() {
               onClick={() => setIsViewOpen(false)}
             ></div>
             <ViewSnippet
+              dispatch={dispatch}
               setIsViewOpen={setIsViewOpen}
               isViewOpen={isViewOpen}
               cardList={state}

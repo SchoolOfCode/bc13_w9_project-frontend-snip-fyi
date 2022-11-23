@@ -57,10 +57,10 @@ export default function Modal({ setIsModalOpen, dispatch }) {
 
     if (!response.ok) {
       console.log("error has happened when submitting the data");
+      return;
     }
 
     dispatch({ type: ACTIONS.ADD_SNIPPET, payload: json.payload });
-    console.log(snippetData);
   }
 
   return (
