@@ -5,6 +5,7 @@
   padding: 1em;
   gap: 1em;
   max-width: 1440px;
+  width: 100%;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto;
 }

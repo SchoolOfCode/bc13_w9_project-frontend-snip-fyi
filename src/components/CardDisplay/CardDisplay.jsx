@@ -8,12 +8,12 @@ export default function CardDisplay({ cardList, setIsViewOpen, setCardId }) {
       {cardList.map((card) => {
         return (
           <Card
-            key={card.id}
-            id={card.id}
-            title={card.title}
-            dateCreated={card.dateCreated}
-            codeSnippet={card.codeSnippet}
-            description={card.description}
+            key={card.snippet_id}
+            id={card.snippet_id}
+            title={card.snippet_title}
+            dateCreated={card.snippet_date_create}
+            codeSnippet={card.snippet_code}
+            description={card.snippet_description}
             commentIds={card.commentIds}
             // Ideally we would want to use context, instead of prop drilling down
             // from App > CardDisplay > Card

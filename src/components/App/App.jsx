@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 
 import "./App.css";
 
@@ -17,69 +17,12 @@ export const ACTIONS = {
   EDIT_SNIPPET: "EDIT_SNIPPET",
 };
 
-const INITIAL_STATE = [
-  {
-    id: 1,
-    title: "My Code",
-    dateCreated: "22/11/2022",
-    codeSnippet: "let const = temporary",
-    description:
-      "bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code",
-    commentIds: [1, 2, 3, 4, 5],
-  },
-  {
-    id: 2,
-    title: "My Bad Code",
-    dateCreated: "22/11/2022",
-    codeSnippet: "let const = temporary",
-    description:
-      "bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code",
-    commentIds: [1, 2, 3, 4, 5],
-  },
-  {
-    id: 3,
-    title: "My Code",
-    dateCreated: "22/11/2022",
-    codeSnippet: "let const = temporary",
-    description:
-      "bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code",
-    commentIds: [1, 2, 3, 4, 5],
-  },
-  {
-    id: 4,
-    title: "My Code",
-    dateCreated: "22/11/2022",
-    codeSnippet: "let const = temporary",
-    description:
-      "bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code",
-    commentIds: [1, 2, 3, 4, 5],
-  },
-  {
-    id: 5,
-    title: "My Code",
-    dateCreated: "22/11/2022",
-    codeSnippet: "let const = temporary",
-    description:
-      "bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code",
-    commentIds: [1, 2, 3, 4, 5],
-  },
-  {
-    id: 6,
-    title: "My Code",
-    dateCreated: "22/11/2022",
-    codeSnippet: "let const = temporary",
-    description:
-      "bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code",
-    commentIds: [1, 2, 3, 4, 5],
-  },
-];
-
 function cardReducer(state, action) {
   switch (action.type) {
     case ACTIONS.ADD_SNIPPET:
-      return console.log("hello world");
+      return [...state, action.payload];
     case ACTIONS.DISPLAY_SNIPPETS:
-      return [...state];
+      return [...action.payload];
     default:
       return state;
   }
@@ -87,11 +30,30 @@ function cardReducer(state, action) {
 
 export default function App() {
   // TODO work out a card object design
-  const [state, dispatch] = useReducer(cardReducer, INITIAL_STATE);
+  const [state, dispatch] = useReducer(cardReducer, []);
   // False by default
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isViewOpen, setIsViewOpen] = useState(false);
   const [cardId, setCardId] = useState(null);
+
+  useEffect(() => {
+    // fetch stuff here
+
+    // async function to fetch our data
+    async function getSnippets() {
+      const response = await fetch(`http://localhost:5000/api/codesnippet`);
+      const json = await response.json();
+
+      // console.log(json.payload);
+      dispatch({ type: ACTIONS.DISPLAY_SNIPPETS, payload: json.payload });
+    }
+
+    getSnippets();
+
+    // call the function
+
+    // check if the response has come back ok
+  }, [dispatch]);
 
   return (
     <div className="App">
@@ -112,7 +74,7 @@ export default function App() {
               className="modal-container"
               onClick={() => setIsModalOpen(false)}
             ></div>
-            <Modal setIsModalOpen={setIsModalOpen} />
+            <Modal setIsModalOpen={setIsModalOpen} dispatch={dispatch} />
           </>
         )}
         {isViewOpen && (
