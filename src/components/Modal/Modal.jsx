@@ -9,12 +9,14 @@ export default function Modal({ setIsModalOpen }) {
 
   return (
     <div className="Modal">
-      <p>{`${day}-${month}-${year}`}</p>
-      <input type="text" placeholder="Title"></input>
-      <textarea placeholder="Your code here" />
-      <textarea placeholder="Description" />
-      <button>Save</button>
-      <button onClick={() => setIsModalOpen(false)}>Close</button>
+      <p className="date">{`${day}-${month}-${year}`}</p>
+      <input className="input_title" type="text" placeholder="Title"></input>
+      <textarea className="input_code" placeholder="Your code here" />
+      <textarea className="input_description" placeholder="Description" />
+      <button className="save_button">Save</button>
+      <button className="close_button" onClick={() => setIsModalOpen(false)}>
+        Close
+      </button>
     </div>
   );
 }
