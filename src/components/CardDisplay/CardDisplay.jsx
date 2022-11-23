@@ -1,10 +1,14 @@
 import React from "react";
-import Card from "../Card/Card";
+// CSS Import
 import "./CardDisplay.css";
+// Component Import
+import Card from "../Card/Card";
 
 export default function CardDisplay({ cardList, setIsViewOpen, setCardId }) {
   return (
     <div className="CardDisplay">
+      {/* Go through the cardList array of snippets 
+      and render a Card component for each of them */}
       {cardList.map((card) => {
         return (
           <Card
@@ -16,7 +20,7 @@ export default function CardDisplay({ cardList, setIsViewOpen, setCardId }) {
             description={card.snippet_description}
             commentIds={card.commentIds}
             // Ideally we would want to use context, instead of prop drilling down
-            // from App > CardDisplay > Card
+            // as we don't use these states / functions in CardDisplay itself, but instead Card
             setIsViewOpen={setIsViewOpen}
             setCardId={setCardId}
           />

@@ -3,13 +3,16 @@
   margin: 0 auto;
   top: 5px;
   width: 75%;
-  height: 700px;
-  background-color: rgba(255, 166, 0, 1);
+  height: auto;
+  background-color: #343a46;
+  border-radius: 10px;
+  padding: 2em;
 }
 pre,
 code {
   font-family: monospace, monospace;
   background-color: antiquewhite;
+  color: #087ea4;
 }
 pre {
   overflow: auto;

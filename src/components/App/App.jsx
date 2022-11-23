@@ -1,62 +1,45 @@
 import React, { useEffect, useReducer, useState } from "react";
 
+// CSS import
 import "./App.css";
 
+// Component import
 import AddButton from "../AddButton/AddButton";
 import Header from "../Header/Header";
 import Search from "../Search/Search";
 import CardDisplay from "../CardDisplay/CardDisplay";
-import Modal from "../Modal/Modal";
-import Footer from "../Footer/Footer";
+import CreateSnippet from "../CreateSnippet/CreateSnippet";
 import ViewSnippet from "../ViewSnippet/ViewSnippet";
 
-export const ACTIONS = {
-  DISPLAY_SNIPPETS: "DISPLAY_SNIPPETS",
-  ADD_SNIPPET: "ADD_SNIPPET",
-  DELETE_SNIPPET: "DELETE_SNIPPET",
-  EDIT_SNIPPET: "EDIT_SNIPPET",
-};
-
-function cardReducer(state, action) {
-  switch (action.type) {
-    case ACTIONS.ADD_SNIPPET:
-      return [...state, action.payload];
-    case ACTIONS.DISPLAY_SNIPPETS:
-      return [...action.payload];
-    case ACTIONS.DELETE_SNIPPET:
-      return state.filter(
-        (snippet) => snippet.snippet_id !== action.payload.snippet_id
-      );
-    default:
-      return state;
-  }
-}
+import { snippetReducer, ACTIONS } from "./reducers";
 
 export default function App() {
-  // TODO work out a card object design
-  const [state, dispatch] = useReducer(cardReducer, []);
-  // False by default
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  // States declared
+  const [state, dispatch] = useReducer(snippetReducer, []);
+  const [isCreateSnippetOpen, setIsCreateSnippetOpen] = useState(false);
   const [isViewOpen, setIsViewOpen] = useState(false);
   const [cardId, setCardId] = useState(null);
 
+  // re-renders all snippets every time the dispatch function gets called
   useEffect(() => {
-    // fetch stuff here
-
-    // async function to fetch our data
     async function getSnippets() {
+      // fetch our data
       const response = await fetch(`http://localhost:5000/api/codesnippet`);
-      const json = await response.json();
-
-      // console.log(json.payload);
-      dispatch({ type: ACTIONS.DISPLAY_SNIPPETS, payload: json.payload });
+      const jsonResponse = await response.json();
+      // If an error happened on the backend while fetching
+      // all our snippets, console log it.
+      if (!response.ok) {
+        console.log("Couldn't fetch all snippets");
+        return;
+      }
+      // dispatch function sets all our snippets into state
+      dispatch({
+        type: ACTIONS.DISPLAY_SNIPPETS,
+        payload: jsonResponse.payload,
+      });
     }
-
+    // finally call the function
     getSnippets();
-
-    // call the function
-
-    // check if the response has come back ok
   }, [dispatch]);
 
   return (
@@ -65,22 +48,30 @@ export default function App() {
       <main className="main-content">
         <div className="utils">
           <Search dispatch={dispatch} />
-          <AddButton setIsModalOpen={setIsModalOpen} buttonText="+" />
+          <AddButton
+            setIsCreateSnippetOpen={setIsCreateSnippetOpen}
+            buttonText="+"
+          />
         </div>
         <CardDisplay
           cardList={state}
           setIsViewOpen={setIsViewOpen}
           setCardId={setCardId}
         />
-        {isModalOpen && (
+        {/* if the modalOpen is true, display our modal to add new snippets */}
+        {isCreateSnippetOpen && (
           <>
             <div
               className="modal-container"
-              onClick={() => setIsModalOpen(false)}
+              onClick={() => setIsCreateSnippetOpen(false)}
             ></div>
-            <Modal setIsModalOpen={setIsModalOpen} dispatch={dispatch} />
+            <CreateSnippet
+              setIsCreateSnippetOpen={setIsCreateSnippetOpen}
+              dispatch={dispatch}
+            />
           </>
         )}
+        {/* if the viewOpen is true, display our snippet view */}
         {isViewOpen && (
           <>
             <div
@@ -97,7 +88,6 @@ export default function App() {
           </>
         )}
       </main>
-      <Footer />
     </div>
   );
 }
