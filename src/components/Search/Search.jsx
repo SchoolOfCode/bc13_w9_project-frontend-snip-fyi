@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from "react";
+import { ACTIONS } from "../App/App";
 import "./Search.css";
 
-export default function Search() {
+export default function Search({dispatch}) {
   const [searchInput, setSearchInput] = useState("");
 
-  // useEffect(() => {
-  //   async function getSnippets() {
-  //     // do fetch stuff here
-
-  //     // return all snippets with the given searchInput
-  //     // checking against the snippet title API URI
-
-  //     // check if searchInput is empty
-  //     // if (searchInput === '') {
-  //       // re fetch all the snippets again and update our state
-  //     };
-  //     // const response = await fetch(`http://localhost:3000/api/v1/snippets/${searchInput}`)
-  //   }
-  // }, [searchInput]);
-
+  useEffect (()=>{
+   async function getSnippetByTitle(){
+    const response = await fetch(`http://localhost:5000/api/codesnippet?search=${searchInput}`)
+    const jsonResponse = await response.json()
+    if (!response.ok){
+      console.log("Error from getSnippetByTitle")
+      return
+    }
+      dispatch({type: ACTIONS.DISPLAY_SNIPPETS, payload: jsonResponse.payload})
+   }
+   getSnippetByTitle()
+  },[dispatch, searchInput])
+  
+  
   return (
     <div className="Search">
       <input
