@@ -105,7 +105,7 @@ export default function App() {
               className="modal-container"
               onClick={() => setIsModalOpen(false)}
             ></div>
-            <Modal setIsModalOpen={setIsModalOpen} />
+            <Modal />
           </>
         )}
       </main>

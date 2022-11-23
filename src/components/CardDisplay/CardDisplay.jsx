@@ -9,6 +9,7 @@ export default function CardDisplay({ cardList }) {
         return (
           <Card
             key={card.id}
+            id={card.id}
             title={card.title}
             dateCreated={card.dateCreated}
             codeSnippet={card.codeSnippet}
