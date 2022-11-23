@@ -5,13 +5,12 @@
   padding: 1em;
   gap: 1em;
   max-width: 1440px;
-  width: 100%;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-flow: row;
 }
 
 @media only screen and (max-width: 900px) {
   .CardDisplay {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 }
