@@ -5,6 +5,7 @@
   border: none;
   font-size: 3rem;
   padding: 0.5em;
+  background-color: #087ea4;
 }
 
 .AddButton button:hover {

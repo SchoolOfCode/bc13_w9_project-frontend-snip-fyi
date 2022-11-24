@@ -20,10 +20,10 @@ function Comment({ author, content, date }) {
           <p className="initials">{authorInitials}</p>
         </div>
 
-        <h3>{author}</h3>
+        <h3 className="comment-author">{author}</h3>
       </div>
       <p className="comment-content">{content}</p>
-      <p>{date}</p>
+      <p className="comment-date">{date}</p>
     </div>
   );
 }

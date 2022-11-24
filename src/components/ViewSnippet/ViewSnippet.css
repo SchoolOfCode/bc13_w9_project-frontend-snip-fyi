@@ -7,19 +7,41 @@
   background-color: #343a46;
   border-radius: 10px;
   padding: 2em;
+  display: flex;
+  flex-direction: column;
 }
-pre,
-code {
-  font-family: "JetBrains Mono";
-  background-color: #23272f;
+
+.ViewSnippet h2 {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.ViewSnippet .description-wrapper {
   border-radius: 5px;
-  color: #087ea4;
-}
-pre {
-  overflow: auto;
-}
-pre > code {
+  min-height: 70px;
   display: block;
   padding: 1rem;
   word-wrap: normal;
+  background-color: #23272f;
+  color: #e8eef2;
+  font-family: "Montserrat", sans-serif;
+}
+
+.ViewSnippet .close-button,
+.ViewSnippet .delete-button {
+  border-radius: 5px;
+  border: none;
+  height: 30px;
+  cursor: pointer;
+  color: #e8eef2;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.ViewSnippet .close-button {
+  background-color: #087ea4;
+}
+.ViewSnippet .delete-button {
+  background-color: #c53535;
+  /* width: 100px; */
 }
