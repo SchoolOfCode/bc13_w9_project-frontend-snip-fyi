@@ -3,3 +3,8 @@
   text-align: center;
   width: 100%;
 }
+
+.Header h1 {
+  font-size: 5rem;
+  margin: 0.4em;
+}
