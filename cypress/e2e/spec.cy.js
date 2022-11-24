@@ -1,15 +1,23 @@
 /// <reference types="cypress"/>
 
-describe("Opening the application", () => {
-  it("Visits the url", () => {
-    cy.visit("http://localhost:3000/");
-  });
+import { slowCypressDown } from "cypress-slow-down";
+
+slowCypressDown(1000);
+
+// describe("Opening the application", () => {
+//   it("Visits the url", () => {
+//     cy.visit("http://localhost:3000/");
+//   });
+// });
+
+beforeEach(() => {
+  cy.visit("http://localhost:3000/");
 });
 
 describe("Testing the add Snippet function", () => {
   it("Clicks the add Snippet button and enters values to create a Snippet", () => {
     cy.get("button").click();
-    cy.get(".Modal > input")
+    cy.get(".CreateSnippet > input")
       .type("How to console.log: Hello World")
       .should("have.value", "How to console.log: Hello World");
     cy.get('[placeholder="Your code here"]')
@@ -64,7 +72,6 @@ describe("Deleting a Snippet", () => {
       .last()
       .click({ force: true });
     cy.get(".ViewSnippet > :nth-child(6)").click();
-    cy.wait(500);
     cy.get(".card-display-wrapper > .CardDisplay > .Card")
       .last()
       .should("not.have.value", "How to console.log: Hello World");
