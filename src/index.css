@@ -4,6 +4,7 @@
   box-sizing: border-box;
 }
 html {
+  min-height: 100vh;
   font-size: 62.5%;
 }
 html,
@@ -13,6 +14,11 @@ body {
 }
 body {
   font-size: 1.6rem;
+}
+
+#root {
+  background-color: #23272f;
+  min-height: 100vh;
 }
 
 /* body > #root > div {
