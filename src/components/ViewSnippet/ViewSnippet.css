@@ -10,8 +10,9 @@
 }
 pre,
 code {
-  font-family: monospace, monospace;
-  background-color: antiquewhite;
+  font-family: "JetBrains Mono";
+  background-color: #23272f;
+  border-radius: 5px;
   color: #087ea4;
 }
 pre {
