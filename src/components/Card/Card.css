@@ -38,3 +38,8 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
+
+.Card:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
