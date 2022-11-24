@@ -21,20 +21,24 @@ export default function Card({
   }
   return (
     <div key={id} onClick={() => handleClick()} className="Card">
-      <h3 className="title">{title}</h3>
-      <p className="date">{dateCreated}</p>
-      <pre>
-        <code>
-          {/* renders our string into formatted js code 
+      <div className="card-inner-wrapper">
+        <h3 className="title">{title}</h3>
+        <p className="date">{dateCreated}</p>
+        <pre>
+          <code>
+            {/* renders our string into formatted js code 
               using babel
           */}
-          {prettier.format(`${codeSnippet}`, {
-            parser: "babel",
-            plugins: [parserBabel, parserHtml],
-          })}
-        </code>
-      </pre>
-      <p className="description">{description}</p>
+            {prettier.format(`${codeSnippet}`, {
+              parser: "babel",
+              plugins: [parserBabel, parserHtml],
+            })}
+          </code>
+        </pre>
+        <div className="desc-wrapper">
+          <p className="description">{description}</p>
+        </div>
+      </div>
     </div>
   );
 }

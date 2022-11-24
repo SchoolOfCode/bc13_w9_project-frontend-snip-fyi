@@ -4,16 +4,37 @@
   height: 300px;
   flex-direction: column;
   border-radius: 10px;
-  background-color: #343a46;
+  background-color: #3d4452;
+  padding: 0.5em;
+}
+
+.card-inner-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .Card .title {
   font-size: 2.4rem;
   text-align: center;
   margin-bottom: 0;
+  color: #e8eef2;
 }
 
 .Card .date {
   margin-top: 0;
   text-align: right;
+  font-style: italic;
+}
+
+.Card .desc-wrapper {
+  margin: 5px;
+}
+
+.Card .description {
+  /* flex: 1; */
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }

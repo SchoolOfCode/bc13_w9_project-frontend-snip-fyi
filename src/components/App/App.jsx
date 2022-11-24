@@ -45,49 +45,51 @@ export default function App() {
   return (
     <div className="App">
       <Header title="Snip" />
-      <main className="main-content">
-        <div className="utils">
-          <Search dispatch={dispatch} />
-          <AddButton
-            setIsCreateSnippetOpen={setIsCreateSnippetOpen}
-            buttonText="+"
-          />
-        </div>
+      {/* <main className="main-content"> */}
+      <div className="utils">
+        <Search dispatch={dispatch} />
+        <AddButton
+          setIsCreateSnippetOpen={setIsCreateSnippetOpen}
+          buttonText="+"
+        />
+      </div>
+      <div className="card-display-wrapper">
         <CardDisplay
           cardList={state}
           setIsViewOpen={setIsViewOpen}
           setCardId={setCardId}
         />
-        {/* if the modalOpen is true, display our modal to add new snippets */}
-        {isCreateSnippetOpen && (
-          <>
-            <div
-              className="modal-container"
-              onClick={() => setIsCreateSnippetOpen(false)}
-            ></div>
-            <CreateSnippet
-              setIsCreateSnippetOpen={setIsCreateSnippetOpen}
-              dispatch={dispatch}
-            />
-          </>
-        )}
-        {/* if the viewOpen is true, display our snippet view */}
-        {isViewOpen && (
-          <>
-            <div
-              className="view-snippet-container"
-              onClick={() => setIsViewOpen(false)}
-            ></div>
-            <ViewSnippet
-              dispatch={dispatch}
-              setIsViewOpen={setIsViewOpen}
-              isViewOpen={isViewOpen}
-              cardList={state}
-              cardId={cardId}
-            />
-          </>
-        )}
-      </main>
+      </div>
+      {/* if the modalOpen is true, display our modal to add new snippets */}
+      {isCreateSnippetOpen && (
+        <>
+          <div
+            className="modal-container"
+            onClick={() => setIsCreateSnippetOpen(false)}
+          ></div>
+          <CreateSnippet
+            setIsCreateSnippetOpen={setIsCreateSnippetOpen}
+            dispatch={dispatch}
+          />
+        </>
+      )}
+      {/* if the viewOpen is true, display our snippet view */}
+      {isViewOpen && (
+        <>
+          <div
+            className="view-snippet-container"
+            onClick={() => setIsViewOpen(false)}
+          ></div>
+          <ViewSnippet
+            dispatch={dispatch}
+            setIsViewOpen={setIsViewOpen}
+            isViewOpen={isViewOpen}
+            cardList={state}
+            cardId={cardId}
+          />
+        </>
+      )}
+      {/* </main> */}
     </div>
   );
 }
