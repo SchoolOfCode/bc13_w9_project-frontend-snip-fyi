@@ -1,9 +1,10 @@
 .Card {
   border: 1px solid black;
   display: flex;
+  height: 300px;
   flex-direction: column;
   border-radius: 10px;
-  background-color: rgb(228, 228, 228);
+  background-color: #343a46;
 }
 
 .Card .title {

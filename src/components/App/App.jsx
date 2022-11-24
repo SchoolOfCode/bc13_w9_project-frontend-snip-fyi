@@ -1,94 +1,46 @@
-import React, { useReducer, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 
+// CSS import
 import "./App.css";
 
+// Component import
 import AddButton from "../AddButton/AddButton";
 import Header from "../Header/Header";
 import Search from "../Search/Search";
 import CardDisplay from "../CardDisplay/CardDisplay";
-import Modal from "../Modal/Modal";
-import Footer from "../Footer/Footer";
+import CreateSnippet from "../CreateSnippet/CreateSnippet";
+import ViewSnippet from "../ViewSnippet/ViewSnippet";
 
-export const ACTIONS = {
-  DISPLAY_SNIPPETS: "DISPLAY_SNIPPETS",
-  ADD_SNIPPET: "ADD_SNIPPET",
-  DELETE_SNIPPET: "DELETE_SNIPPET",
-  EDIT_SNIPPET: "EDIT_SNIPPET",
-};
-
-const INITIAL_STATE = [
-  {
-    id: 1,
-    title: "My Code",
-    dateCreated: "22/11/2022",
-    codeSnippet: "let const = temporary",
-    description:
-      "bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code",
-    commentIds: [1, 2, 3, 4, 5],
-  },
-  {
-    id: 2,
-    title: "My Code",
-    dateCreated: "22/11/2022",
-    codeSnippet: "let const = temporary",
-    description:
-      "bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code",
-    commentIds: [1, 2, 3, 4, 5],
-  },
-  {
-    id: 3,
-    title: "My Code",
-    dateCreated: "22/11/2022",
-    codeSnippet: "let const = temporary",
-    description:
-      "bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code",
-    commentIds: [1, 2, 3, 4, 5],
-  },
-  {
-    id: 4,
-    title: "My Code",
-    dateCreated: "22/11/2022",
-    codeSnippet: "let const = temporary",
-    description:
-      "bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code",
-    commentIds: [1, 2, 3, 4, 5],
-  },
-  {
-    id: 5,
-    title: "My Code",
-    dateCreated: "22/11/2022",
-    codeSnippet: "let const = temporary",
-    description:
-      "bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code",
-    commentIds: [1, 2, 3, 4, 5],
-  },
-  {
-    id: 6,
-    title: "My Code",
-    dateCreated: "22/11/2022",
-    codeSnippet: "let const = temporary",
-    description:
-      "bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code bad code",
-    commentIds: [1, 2, 3, 4, 5],
-  },
-];
-
-function cardReducer(state, action) {
-  switch (action.type) {
-    case ACTIONS.ADD_SNIPPET:
-      return console.log("hello world");
-    case ACTIONS.DISPLAY_SNIPPETS:
-      return [...state];
-    default:
-      return state;
-  }
-}
+import { ACTIONS, snippetReducer } from "../../helpers/reducers";
 
 export default function App() {
-  // TODO work out a card object design
-  const [state, dispatch] = useReducer(cardReducer, INITIAL_STATE);
-  // False by default
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  // States declared
+  const [state, dispatch] = useReducer(snippetReducer, []);
+  const [isCreateSnippetOpen, setIsCreateSnippetOpen] = useState(false);
+  const [isViewOpen, setIsViewOpen] = useState(false);
+  const [cardId, setCardId] = useState(null);
+
+  // re-renders all snippets every time the dispatch function gets called
+  useEffect(() => {
+    async function getSnippets() {
+      // fetch our data
+      const response = await fetch(`http://localhost:5000/api/codesnippet`);
+      const jsonResponse = await response.json();
+      // If an error happened on the backend while fetching
+      // all our snippets, console log it.
+      if (!response.ok) {
+        console.log("Couldn't fetch all snippets");
+        return;
+      }
+      // dispatch function sets all our snippets into state
+      dispatch({
+        type: ACTIONS.DISPLAY_SNIPPETS,
+        payload: jsonResponse.payload,
+      });
+    }
+    // finally call the function
+    getSnippets();
+  }, [dispatch]);
 
   return (
     <div className="App">
@@ -96,20 +48,46 @@ export default function App() {
       <main className="main-content">
         <div className="utils">
           <Search dispatch={dispatch} />
-          <AddButton setIsModalOpen={setIsModalOpen} buttonText="+" />
+          <AddButton
+            setIsCreateSnippetOpen={setIsCreateSnippetOpen}
+            buttonText="+"
+          />
         </div>
-        <CardDisplay cardList={state} />
-        {isModalOpen && (
+        <CardDisplay
+          cardList={state}
+          setIsViewOpen={setIsViewOpen}
+          setCardId={setCardId}
+        />
+        {/* if the modalOpen is true, display our modal to add new snippets */}
+        {isCreateSnippetOpen && (
           <>
             <div
               className="modal-container"
-              onClick={() => setIsModalOpen(false)}
+              onClick={() => setIsCreateSnippetOpen(false)}
             ></div>
-            <Modal setIsModalOpen={setIsModalOpen} />
+            <CreateSnippet
+              setIsCreateSnippetOpen={setIsCreateSnippetOpen}
+              dispatch={dispatch}
+            />
+          </>
+        )}
+        {/* if the viewOpen is true, display our snippet view */}
+        {isViewOpen && (
+          <>
+            <div
+              className="view-snippet-container"
+              onClick={() => setIsViewOpen(false)}
+            ></div>
+            <ViewSnippet
+              dispatch={dispatch}
+              setIsViewOpen={setIsViewOpen}
+              isViewOpen={isViewOpen}
+              cardList={state}
+              cardId={cardId}
+            />
           </>
         )}
       </main>
-      <Footer />
     </div>
   );
 }
