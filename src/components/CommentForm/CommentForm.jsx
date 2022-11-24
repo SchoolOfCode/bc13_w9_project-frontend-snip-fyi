@@ -74,7 +74,9 @@ function CommentForm({ commentsState, commentsDispatch, cardId }) {
       because button is of type submit within a <form> it'll call the handleSubmit function 
       declared inside our form tag 
         */}
-      <button type="submit">Submit</button>
+      <button className="form-buttons" type="submit">
+        Submit
+      </button>
     </form>
   );
 }

@@ -56,8 +56,14 @@ export default function ViewSnippet({
     // As stated before, because it'll be the only snippet in the array
     // we can directly access it using [0]
     <div className="ViewSnippet">
-      <p>{clickedCard[0].snippet_date_create}</p>
-      <p>{clickedCard[0].snippet_title}</p>
+      {/* closes our view modal */}
+      <div className="button-wrapper">
+        <button className="close-button" onClick={() => setIsViewOpen(false)}>
+          Close
+        </button>
+      </div>
+      <p className="date-block">{clickedCard[0].snippet_date_create}</p>
+      <h2>{clickedCard[0].snippet_title}</h2>
       <pre>
         <code>
           {/* renders our string into formatted js code 
@@ -69,11 +75,15 @@ export default function ViewSnippet({
           })}
         </code>
       </pre>
-      <p>{clickedCard[0].snippet_description}</p>
-      {/* closes our view modal */}
-      <button onClick={() => setIsViewOpen(false)}>Close</button>
+      <div className="description-wrapper">
+        <p>{clickedCard[0].snippet_description}</p>
+      </div>
       {/* calls our delete function and passes its card id, to delete */}
-      <button onClick={() => handleDelete(cardId)}>Delete</button>
+      <div className="button-wrapper">
+        <button className="delete-button" onClick={() => handleDelete(cardId)}>
+          Delete Snippet
+        </button>
+      </div>
       {/* render our CommentList and pass down the comments state, dispatch function and id */}
       <CommentList
         commentsState={commentsState}

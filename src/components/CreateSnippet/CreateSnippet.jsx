@@ -10,7 +10,7 @@ import "./CreateSnippet.css";
 // Helper function that formats our date
 import formatDate from "../../helpers/formatDate";
 
-export default function Modal({ setIsCreateSnippetOpen, dispatch }) {
+export default function CreateSnippet({ setIsCreateSnippetOpen, dispatch }) {
   // Initial states declared
   // TODO refactor states to be one single object
   const [title, setTitle] = useState("");
@@ -77,9 +77,20 @@ export default function Modal({ setIsCreateSnippetOpen, dispatch }) {
   }
 
   return (
-    <form className="Modal" onSubmit={(e) => handleSubmit(e)}>
-      <p>{formatDate()}</p>
+    <form className="CreateSnippet" onSubmit={(e) => handleSubmit(e)}>
+      {/* sets our modal to false, which in turn causes a re-render to close our modal */}
+      <div className="button-wrapper">
+        <button
+          className="close-button"
+          type="button"
+          onClick={() => setIsCreateSnippetOpen(false)}
+        >
+          Close
+        </button>
+      </div>
+      <p className="date-block">{formatDate()}</p>
       <input
+        className="title-block"
         onChange={(e) => setTitle(e.target.value)}
         type="text"
         placeholder="Title"
@@ -87,16 +98,26 @@ export default function Modal({ setIsCreateSnippetOpen, dispatch }) {
       {/* If an error / js code did pass return an error to our display */}
       {error ? (
         <>
-          <p>The JavaScript code entered is not valid</p>
-          <textarea onChange={(e) => setCode(e.target.value)} value={code} />
+          <p className="error-message">
+            The JavaScript code entered is not valid
+          </p>
+          <textarea
+            className="error code-block"
+            spellCheck="false"
+            onChange={(e) => setCode(e.target.value)}
+            value={code}
+          />
         </>
       ) : (
         <textarea
+          spellCheck="false"
+          className="code-block"
           onChange={(e) => setCode(e.target.value)}
           placeholder="Your code here"
         />
       )}
       <textarea
+        className="description-block"
         onChange={(e) => setDesc(e.target.value)}
         placeholder="Description"
       />
@@ -104,12 +125,11 @@ export default function Modal({ setIsCreateSnippetOpen, dispatch }) {
       because button is of type submit within a <form> it'll call the handleSubmit function 
       declared inside our form tag 
         */}
-      <button type="submit">Save</button>
-
-      {/* sets our modal to false, which in turn causes a re-render to close our modal */}
-      <button type="button" onClick={() => setIsCreateSnippetOpen(false)}>
-        Close
-      </button>
+      <div className="button-wrapper">
+        <button className="save-button" type="submit">
+          Save
+        </button>
+      </div>
     </form>
   );
 }

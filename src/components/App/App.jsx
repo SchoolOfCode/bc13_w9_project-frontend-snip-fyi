@@ -63,10 +63,10 @@ export default function App() {
       {/* if the modalOpen is true, display our modal to add new snippets */}
       {isCreateSnippetOpen && (
         <>
-          <div
+          {/* <div
             className="modal-container"
             onClick={() => setIsCreateSnippetOpen(false)}
-          ></div>
+          ></div> */}
           <CreateSnippet
             setIsCreateSnippetOpen={setIsCreateSnippetOpen}
             dispatch={dispatch}
@@ -75,19 +75,17 @@ export default function App() {
       )}
       {/* if the viewOpen is true, display our snippet view */}
       {isViewOpen && (
-        <>
-          <div
-            className="view-snippet-container"
-            onClick={() => setIsViewOpen(false)}
-          ></div>
-          <ViewSnippet
-            dispatch={dispatch}
-            setIsViewOpen={setIsViewOpen}
-            isViewOpen={isViewOpen}
-            cardList={state}
-            cardId={cardId}
-          />
-        </>
+        // <div
+        //   className="view-snippet-container"
+        //   onClick={() => setIsViewOpen(false)}
+        // ></div>
+        <ViewSnippet
+          dispatch={dispatch}
+          setIsViewOpen={setIsViewOpen}
+          isViewOpen={isViewOpen}
+          cardList={state}
+          cardId={cardId}
+        />
       )}
       {/* </main> */}
     </div>

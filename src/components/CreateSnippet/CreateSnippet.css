@@ -1,4 +1,4 @@
-.Modal {
+.CreateSnippet {
   position: relative;
   margin: 0 auto;
   top: 5px;
@@ -8,6 +8,79 @@
   border-radius: 10px;
   padding: 2em;
   transition: all 200ms ease-in;
+
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-around; */
+  gap: 1em;
+}
+
+.date-block {
+  align-self: flex-end;
+}
+
+.title-block,
+.description-block,
+.code-block {
+  display: block;
+  padding: 1rem;
+  word-wrap: normal;
+}
+
+.title-block,
+.description-block {
+  background-color: #23272f;
+  color: #e8eef2;
+  font-family: "Montserrat", sans-serif;
+}
+
+.code-block {
+  height: 50%;
+  font-family: "JetBrains Mono";
+  background-color: #23272f;
+  border-radius: 5px;
+  color: #087ea4;
+}
+
+.description-block {
+  flex: 1;
+}
+
+.error {
+  border: 2px solid #c53535;
+}
+
+.error-message {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.button-wrapper {
+  align-self: flex-end;
+  display: flex;
+  gap: 1em;
+  margin-top: ;
+}
+
+.save-button,
+.close-button {
+  border-radius: 5px;
+  border: none;
+  height: 30px;
+  cursor: pointer;
+  width: 100px;
+  padding: 0.5em;
+}
+
+.save-button {
+  background-color: #c53535;
+  color: #e8eef2;
+}
+
+.close-button {
+  background-color: #087ea4;
+  color: #e8eef2;
 }
 
 @media only screen and (max-width: 900px) {
