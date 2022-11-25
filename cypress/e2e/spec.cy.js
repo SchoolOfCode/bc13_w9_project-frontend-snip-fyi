@@ -2,7 +2,7 @@
 
 import { slowCypressDown } from "cypress-slow-down";
 
-slowCypressDown(1000);
+slowCypressDown(750);
 
 // describe("Opening the application", () => {
 //   it("Visits the url", () => {
