@@ -1,3 +1,6 @@
+/**
+ * Reducer actions that be performed
+ */
 export const ACTIONS = {
   DISPLAY_SNIPPETS: "DISPLAY_SNIPPETS",
   ADD_SNIPPET: "ADD_SNIPPET",
@@ -6,6 +9,12 @@ export const ACTIONS = {
   DISPLAY_COMMENTS: "DISPLAY_COMMENTS",
 };
 
+/**
+ *
+ * @param {*} state
+ * @param {*} action
+ * @returns A new state based on the which action it was called with
+ */
 export function snippetReducer(state, action) {
   switch (action.type) {
     case ACTIONS.ADD_SNIPPET:
@@ -20,7 +29,12 @@ export function snippetReducer(state, action) {
       return state;
   }
 }
-
+/**
+ *
+ * @param {*} state
+ * @param {*} action
+ * @returns A new state based on the which action it was called with
+ */
 export function commentReducer(state, action) {
   switch (action.type) {
     case ACTIONS.ADD_COMMENT:

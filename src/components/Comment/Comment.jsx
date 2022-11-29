@@ -3,10 +3,11 @@ import React from "react";
 import "./Comment.css";
 
 function Comment({ author, content, date }) {
-  // Splits authors name into initials
-  // Takes the first letter of every word (name)
-  // Joins them together
-  // and upperCase it
+  /**
+   * Splits authors name into initials.
+   * Takes the first letter of every word (name).
+   * Joins them together and upperCases it
+   */
   const authorInitials = author
     .split(" ")
     .map((word) => word.charAt(0))

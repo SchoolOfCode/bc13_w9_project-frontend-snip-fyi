@@ -12,9 +12,11 @@ export default function Card({
   setIsViewOpen,
   setCardId,
 }) {
-  // When a single snippet card has been clicked
-  // set the state of cardId to the id that was clicked
-  // and open the view
+  /**
+   * When a single snippet card has been clicked
+   * set the state of cardId to the id that was clicked
+   * and open the view
+   */
   function handleClick() {
     setCardId(id);
     setIsViewOpen(true);

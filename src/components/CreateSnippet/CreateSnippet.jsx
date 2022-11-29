@@ -43,8 +43,10 @@ export default function CreateSnippet({ setIsCreateSnippetOpen, dispatch }) {
       return;
     }
 
-    // Create a snippet object to send to our backend server
-    // and store in our database
+    /**
+     * Create a snippet object to send to our backend server
+    and store in our database
+     */
     const snippetData = {
       snippet_title: title,
       snippet_code: code,

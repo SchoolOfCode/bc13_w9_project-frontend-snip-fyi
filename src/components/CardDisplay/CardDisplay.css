@@ -4,7 +4,6 @@
   margin-top: 2rem;
   padding: 1em;
   gap: 1em;
-  /* max-width: 1440px; */
   background-color: #23272f;
   width: 100%;
   grid-template-columns: repeat(4, minmax(0, 1fr));

@@ -4,7 +4,7 @@ import { ACTIONS } from "../../helpers/reducers";
 
 import "./CommentForm.css";
 
-function CommentForm({ commentsState, commentsDispatch, cardId }) {
+function CommentForm({ commentsDispatch, cardId }) {
   // initial states
   const [author, setAuthor] = useState("Anonymous");
   const [comment, setComment] = useState("");
@@ -17,8 +17,10 @@ function CommentForm({ commentsState, commentsDispatch, cardId }) {
     // so return
     if (!author || !comment) return;
 
-    // Create a new comment object with the data we want to send to our backend
-    // and create a new comment with
+    /**
+     * Create a new comment object with the data we want to POST to our backend
+     * and create a new comment with it
+     */
     const newComment = {
       snippet_id: cardId,
       comment_content: comment,

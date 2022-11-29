@@ -91,11 +91,7 @@ export default function ViewSnippet({
         cardId={cardId}
       />
       {/* render our CommentForm and pass down the comments state, dispatch function and id */}
-      <CommentForm
-        commentsState={commentsState}
-        commentsDispatch={commentsDispatch}
-        cardId={cardId}
-      />
+      <CommentForm commentsDispatch={commentsDispatch} cardId={cardId} />
     </div>
   );
 }

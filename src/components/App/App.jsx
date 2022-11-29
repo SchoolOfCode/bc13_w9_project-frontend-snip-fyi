@@ -22,6 +22,9 @@ export default function App() {
 
   // re-renders all snippets every time the dispatch function gets called
   useEffect(() => {
+    /**
+     * Gets all our snippets from the database
+     */
     async function getSnippets() {
       // fetch our data
       const response = await fetch(`http://localhost:5000/api/codesnippet`);
@@ -45,7 +48,6 @@ export default function App() {
   return (
     <div className="App">
       <Header title="Snip" />
-      {/* <main className="main-content"> */}
       <div className="utils">
         <Search dispatch={dispatch} />
         <AddButton
@@ -63,10 +65,6 @@ export default function App() {
       {/* if the modalOpen is true, display our modal to add new snippets */}
       {isCreateSnippetOpen && (
         <>
-          {/* <div
-            className="modal-container"
-            onClick={() => setIsCreateSnippetOpen(false)}
-          ></div> */}
           <CreateSnippet
             setIsCreateSnippetOpen={setIsCreateSnippetOpen}
             dispatch={dispatch}
@@ -75,10 +73,6 @@ export default function App() {
       )}
       {/* if the viewOpen is true, display our snippet view */}
       {isViewOpen && (
-        // <div
-        //   className="view-snippet-container"
-        //   onClick={() => setIsViewOpen(false)}
-        // ></div>
         <ViewSnippet
           dispatch={dispatch}
           setIsViewOpen={setIsViewOpen}
@@ -87,7 +81,6 @@ export default function App() {
           cardId={cardId}
         />
       )}
-      {/* </main> */}
     </div>
   );
 }
