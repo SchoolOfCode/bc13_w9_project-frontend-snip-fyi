@@ -48,7 +48,7 @@ export default function Search({ dispatch }) {
         onChange={(e) => setSearchInput(e.target.value)}
         type="search"
         // TODO Add search icon to placeholder
-        placeholder="Search"
+        placeholder="Search..."
       />
     </div>
   );

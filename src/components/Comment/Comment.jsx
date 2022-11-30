@@ -15,16 +15,20 @@ function Comment({ author, content, date }) {
     .toUpperCase();
 
   return (
-    <div className="Comment">
+    <div role="comment" className="Comment">
       <div className="authors-name">
         <div className="circle-initials">
-          <p className="initials">{authorInitials}</p>
+          <p role="initials" className="initials">
+            {authorInitials}
+          </p>
         </div>
 
         <h3 className="comment-author">{author}</h3>
       </div>
       <p className="comment-content">{content}</p>
-      <p className="comment-date">{date}</p>
+      <p role="date" className="comment-date">
+        {date}
+      </p>
     </div>
   );
 }

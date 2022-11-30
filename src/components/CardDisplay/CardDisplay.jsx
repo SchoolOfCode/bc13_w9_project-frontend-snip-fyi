@@ -6,7 +6,7 @@ import Card from "../Card/Card";
 
 export default function CardDisplay({ cardList, setIsViewOpen, setCardId }) {
   return (
-    <div className="CardDisplay">
+    <div role="display" className="CardDisplay">
       {/* Go through the cardList array of snippets 
       and render a Card component for each of them */}
       {cardList.map((card) => {
@@ -18,7 +18,6 @@ export default function CardDisplay({ cardList, setIsViewOpen, setCardId }) {
             dateCreated={card.snippet_date_create}
             codeSnippet={card.snippet_code}
             description={card.snippet_description}
-            commentIds={card.commentIds}
             // Ideally we would want to use context, instead of prop drilling down
             // as we don't use these states / functions in CardDisplay itself, but instead Card
             setIsViewOpen={setIsViewOpen}

@@ -22,7 +22,7 @@ export default function Card({
     setIsViewOpen(true);
   }
   return (
-    <div key={id} onClick={() => handleClick()} className="Card">
+    <div role="card" key={id} onClick={() => handleClick()} className="Card">
       <div className="card-inner-wrapper">
         <h3 className="title">{title}</h3>
         <p className="date">{dateCreated}</p>
