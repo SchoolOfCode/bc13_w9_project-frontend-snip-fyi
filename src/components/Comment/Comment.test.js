@@ -1,5 +1,4 @@
 import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
 import formatDate from "../../helpers/formatDate";
 
@@ -16,7 +15,7 @@ describe("Testing contents of a comment", () => {
     );
 
     // Act
-    screen.findByRole("comment");
+    screen.getByRole("comment");
 
     // Assert
     expect(screen.getByRole("comment")).toBeVisible();
@@ -31,7 +30,7 @@ describe("Testing contents of a comment", () => {
     );
 
     // Act
-    screen.findByRole("comment");
+    screen.getByRole("comment");
 
     // Assert
     expect(screen.getByRole("heading")).toHaveTextContent("Ben");
@@ -47,7 +46,7 @@ describe("Testing contents of a comment", () => {
     );
 
     // Act
-    screen.findByRole("comment");
+    screen.getByRole("comment");
 
     // Assert
     expect(screen.getByRole("initials")).toHaveTextContent("BMF");
@@ -64,7 +63,7 @@ describe("Testing contents of a comment", () => {
     );
 
     // Act
-    screen.findByRole("comment");
+    screen.getByRole("comment");
 
     // Assert
     expect(screen.getByRole("date")).toHaveTextContent(now);
