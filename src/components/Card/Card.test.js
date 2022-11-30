@@ -1,38 +1,56 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import prettier from "https://unpkg.com/prettier@2.8.0/esm/standalone.mjs";
-import parserBabel from "https://unpkg.com/prettier@2.8.0/esm/parser-babel.mjs";
-import parserHtml from "https://unpkg.com/prettier@2.8.0/esm/parser-html.mjs";
 import "@testing-library/jest-dom";
 
 import formatDate from "../../helpers/formatDate";
 import Card from "./Card";
 
+const cardDetails = {
+  title: "testing title",
+  date: formatDate(),
+  code: `console.log("hello world");`,
+  description: "simple test",
+  cardId: 10,
+};
+
 describe("Renders all of our Cards", () => {
   // Arrange
+  test("Check our title is correct", () => {
+    render(
+      <Card
+        title={cardDetails.title}
+        dateCreated={cardDetails.date}
+        description={cardDetails.description}
+        codeSnippet={cardDetails.code}
+        setCardId={cardDetails.cardId}
+        setIsViewOpen={() => jest.fn()}
+      />
+    );
 
-  const cardDetails = {
-    title: "testing title",
-    date: formatDate(),
-    code: "console.log('hello world');",
-    description: "simple test",
-    cardId: 10,
-  };
+    // Act
+    screen.getByRole("card");
 
-  render(
-    <Card
-      title={cardDetails.title}
-      dateCreated={cardDetails.date}
-      description={cardDetails.description}
-      codeSnippet={cardDetails.code}
-      setCardId={cardDetails.cardId}
-      setIsViewOpen={() => jest.fn()}
-    />
-  );
+    // Assert
+    expect(screen.getByRole("card")).toHaveTextContent("testing title");
+  });
+  test("Check our code is correct", () => {
+    render(
+      <Card
+        title={cardDetails.title}
+        dateCreated={cardDetails.date}
+        description={cardDetails.description}
+        codeSnippet={cardDetails.code}
+        setCardId={cardDetails.cardId}
+        setIsViewOpen={() => jest.fn()}
+      />
+    );
 
-  // Act
-  screen.findByRole("card");
+    // Act
+    screen.getByRole("card");
 
-  // Assert
-  expect(screen.getByRole("card")).toHaveTextContent("testing title");
+    // Assert
+    expect(screen.getByRole("pre")).toHaveTextContent(
+      `console.log("hello world");`
+    );
+  });
 });

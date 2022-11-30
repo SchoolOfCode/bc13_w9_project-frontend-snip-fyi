@@ -1,8 +1,10 @@
 import React from "react";
-import prettier from "https://unpkg.com/prettier@2.8.0/esm/standalone.mjs";
-import parserBabel from "https://unpkg.com/prettier@2.8.0/esm/parser-babel.mjs";
-import parserHtml from "https://unpkg.com/prettier@2.8.0/esm/parser-html.mjs";
 import "./Card.css";
+
+const prettier = require("prettier/standalone");
+const parserBabel = require("prettier/parser-babel");
+const parserHtml = require("prettier/parser-html");
+
 export default function Card({
   id,
   title,
@@ -26,7 +28,7 @@ export default function Card({
       <div className="card-inner-wrapper">
         <h3 className="title">{title}</h3>
         <p className="date">{dateCreated}</p>
-        <pre>
+        <pre role="pre">
           <code>
             {/* renders our string into formatted js code 
               using babel
