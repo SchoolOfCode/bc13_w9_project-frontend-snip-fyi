@@ -1,14 +1,14 @@
 import React, { useReducer } from "react";
 import { ACTIONS, commentReducer } from "../../helpers/reducers";
 // Import used to format / check js code
-import prettier from "https://unpkg.com/prettier@2.8.0/esm/standalone.mjs";
-import parserBabel from "https://unpkg.com/prettier@2.8.0/esm/parser-babel.mjs";
-import parserHtml from "https://unpkg.com/prettier@2.8.0/esm/parser-html.mjs";
 // CSS import
 import "./ViewSnippet.css";
 // Component imports
 import CommentList from "../CommentList/CommentList";
 import CommentForm from "../CommentForm/CommentForm";
+const prettier = require("prettier/standalone");
+const parserBabel = require("prettier/parser-babel");
+const parserHtml = require("prettier/parser-html");
 
 // Destructured props sent
 export default function ViewSnippet({
