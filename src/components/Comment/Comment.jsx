@@ -2,6 +2,10 @@ import React from "react";
 // CSS import
 import "./Comment.css";
 
+const aria_comment = "comment";
+const aria_initials = "initials";
+const aria_date = "date";
+
 function Comment({ author, content, date }) {
   /**
    * Splits authors name into initials.
@@ -15,10 +19,10 @@ function Comment({ author, content, date }) {
     .toUpperCase();
 
   return (
-    <div role="comment" className="Comment">
+    <div role={aria_comment} className="Comment">
       <div className="authors-name">
         <div className="circle-initials">
-          <p role="initials" className="initials">
+          <p role={aria_initials} className="initials">
             {authorInitials}
           </p>
         </div>
@@ -26,7 +30,7 @@ function Comment({ author, content, date }) {
         <h3 className="comment-author">{author}</h3>
       </div>
       <p className="comment-content">{content}</p>
-      <p role="date" className="comment-date">
+      <p role={aria_date} className="comment-date">
         {date}
       </p>
     </div>

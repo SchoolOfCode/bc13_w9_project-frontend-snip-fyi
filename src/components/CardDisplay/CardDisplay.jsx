@@ -4,9 +4,11 @@ import "./CardDisplay.css";
 // Component Import
 import Card from "../Card/Card";
 
+const aria_display = "display";
+
 export default function CardDisplay({ cardList, setIsViewOpen, setCardId }) {
   return (
-    <div role="display" className="CardDisplay">
+    <div role={aria_display} className="CardDisplay">
       {/* Go through the cardList array of snippets 
       and render a Card component for each of them */}
       {cardList.map((card) => {

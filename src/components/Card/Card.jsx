@@ -5,6 +5,9 @@ const prettier = require("prettier/standalone");
 const parserBabel = require("prettier/parser-babel");
 const parserHtml = require("prettier/parser-html");
 
+const aria_card = "card";
+const aria_pre = "pre";
+
 export default function Card({
   id,
   title,
@@ -24,11 +27,16 @@ export default function Card({
     setIsViewOpen(true);
   }
   return (
-    <div role="card" key={id} onClick={() => handleClick()} className="Card">
+    <div
+      role={aria_card}
+      key={id}
+      onClick={() => handleClick()}
+      className="Card"
+    >
       <div className="card-inner-wrapper">
         <h3 className="title">{title}</h3>
         <p className="date">{dateCreated}</p>
-        <pre role="pre">
+        <pre role={aria_pre}>
           <code>
             {/* renders our string into formatted js code 
               using babel
